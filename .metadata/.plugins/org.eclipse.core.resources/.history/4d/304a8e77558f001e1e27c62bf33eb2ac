@@ -1,0 +1,61 @@
+package com.example.demo.controllertest;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+import com.example.Task2.service.StudentService;
+import com.example.demo.controller.StudentController;
+import com.example.demo.entity.Student;
+
+@RunWith(MockitoJUnitRunner.class)
+public class StudentControllerTest {
+
+    @InjectMocks
+    private StudentController studentController;
+
+    @Mock
+    private StudentService studentService;
+
+    @Test
+    public void testAddStudent() {
+        // Create a sample student
+        Student newStudent = new Student();
+        newStudent.setId(1L);
+        newStudent.setName("John Doe");
+
+        // Mocking behavior of studentService.saveStudent()
+        when(studentService.saveStudent(any(Student.class))).thenReturn(newStudent);
+
+        // Perform the controller method
+        ResponseEntity<Student> response = studentController.addStudent(newStudent);
+
+        // Assertions
+        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertEquals(newStudent, response.getBody());
+    }
+
+    @Test
+    public void testDeleteStudent() {
+        Long studentId = 1L;
+
+        // Perform the controller method
+        ResponseEntity<Void> response = studentController.deleteStudent(studentId);
+
+        // Assertions
+        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
+
+        // Verify that studentService.deleteStudent() was called with the correct ID
+        verify(studentService, times(1)).deleteStudent(eq(studentId));
+    }
+}

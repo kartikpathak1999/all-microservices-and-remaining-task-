@@ -1,0 +1,40 @@
+package com.example.demo.controllertest;
+
+
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+import java.util.Collections;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
+
+public class StudentControllerTest {
+
+    @Mock
+    private StudentService studentService;
+
+    @InjectMocks
+    private StudentController studentController;
+
+    public StudentControllerTest() {
+        MockitoAnnotations.openMocks(this);
+    }
+
+    @Test
+    public void testGetAllStudents() {
+        // Mock service behavior
+        when(studentService.getAllStudents()).thenReturn(Collections.emptyList());
+
+        ResponseEntity<?> responseEntity = studentController.getAllStudents();
+
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+    }
+
+    // Similar tests for other endpoints
+}

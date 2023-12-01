@@ -1,0 +1,89 @@
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import com.example.Task2.entity.Student;
+import com.example.Task2.service.StudentService;
+
+public class StudentControllerTest {
+
+    @Mock
+    private StudentService studentService;
+
+    @InjectMocks
+    private StudentController studentController;
+
+    public StudentControllerTest() {
+        MockitoAnnotations.openMocks(this);
+    }
+
+    @Test
+    public void testAddStudent() {
+        Student student = new Student();
+        // Set up your student object here...
+
+        when(studentService.saveStudent(student)).thenReturn(student);
+
+        Student result = studentController.addStudent(student);
+
+        assertEquals(student, result);
+    }
+
+    @Test
+    public void testGetAll() {
+        List<Student> students = new ArrayList<>();
+        // Add some mock student data to the list...
+
+        when(studentService.getAllStudents()).thenReturn(students);
+
+        List<Student> result = studentController.GetAll();
+
+        assertEquals(students, result);
+    }
+
+    @Test
+    public void testGetById() {
+        int id = 1;
+        Student student = new Student();
+        // Set up your student object here...
+
+        when(studentService.getStudentById(id)).thenReturn(student);
+
+        Student result = studentController.getById(id);
+
+        assertEquals(student, result);
+    }
+
+    @Test
+    public void testUpdate() {
+        int id = 1;
+        Student student = new Student();
+        // Set up your student object here...
+
+        when(studentService.updateStudent(id, student)).thenReturn(student);
+
+        Student result = studentController.update(id, student);
+
+        assertEquals(student, result);
+    }
+
+    @Test
+    public void testDelete() {
+        int id = 1;
+        String message = "Student deleted successfully";
+
+        when(studentService.deleteStudent(id)).thenReturn(message);
+
+        String result = studentController.delete(id);
+
+        assertEquals(message, result);
+    }
+}

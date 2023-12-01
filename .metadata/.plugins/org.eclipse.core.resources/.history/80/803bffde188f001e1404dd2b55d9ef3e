@@ -1,0 +1,15 @@
+package com.example.demo.service;
+
+import java.util.List;
+
+import com.example.demo.entity.Student;
+import com.google.common.base.Optional;
+
+public interface StudentService {
+    List<Student> getAllStudents();
+    Optional<Student> getStudentById(Long id);
+    Student saveStudent(Student student);
+    void deleteStudent(Long id);
+    // Additional methods if needed
+}
+

@@ -1,0 +1,46 @@
+package com.example.demo.servicetest;
+
+
+
+	import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
+
+import java.util.Collections;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import com.example.demo.entity.Student;
+import com.example.demo.repository.StudentRepository;
+import com.example.demo.serviceimpl.StudentServiceImpl;
+
+	public class StudentserviceTest {
+
+	    @Mock
+	    private StudentRepository studentRepository;
+
+	    @InjectMocks
+	    private StudentServiceImpl studentService;
+
+	    public StudentserviceTest() {
+	        MockitoAnnotations.openMocks(this);
+	    }
+
+	    @Test
+	    public void testGetAllStudents() {
+	        // Mock repository behavior
+	        when(studentRepository.findAll()).thenReturn(Collections.emptyList());
+
+	        List<Student> students = studentService.getAllStudents();
+
+	        assertEquals(0, students.size());
+	    }
+
+	    // Similar tests for other methods
+	}
+
+
+

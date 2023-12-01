@@ -1,0 +1,14 @@
+package com.example.demo.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.demo.entity.Mentor;
+import com.example.demo.entity.TrainingSchedule;
+
+//TrainingSchedule repository
+public interface TrainingScheduleRepository extends JpaRepository<TrainingSchedule, Long> {
+ List<TrainingSchedule> findByMentor(Mentor mentor);
+ // Other custom queries
+}

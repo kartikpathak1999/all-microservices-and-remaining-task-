@@ -1,0 +1,23 @@
+package com.example.demo.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entity.Mentor;
+
+
+@Service
+public class TrainingService {
+    private final TrainingRepository trainingRepository;
+
+    public TrainingService(TrainingRepository trainingRepository) {
+        this.trainingRepository = trainingRepository;
+    }
+
+    public List<Training> getTrainingsByMentorId(Long mentorId) {
+        return trainingRepository.findByMentorId(mentorId);
+    }
+
+    // Implement methods for training operations (CRUD)
+}

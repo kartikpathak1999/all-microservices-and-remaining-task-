@@ -1,0 +1,15 @@
+package com.example.demo.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entity.Mentor;
+import com.example.demo.entity.TrainingSchedule;
+
+public interface TrainingScheduleService {
+	    List<TrainingSchedule> getTrainingSchedulesByMentor(Mentor mentor);
+	    TrainingSchedule createTrainingSchedule(TrainingSchedule schedule);
+	    // Other training schedule related methods
+	}
+

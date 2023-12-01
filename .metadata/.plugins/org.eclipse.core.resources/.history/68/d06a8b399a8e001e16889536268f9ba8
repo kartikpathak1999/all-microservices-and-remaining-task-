@@ -1,0 +1,37 @@
+package com.cg.departmentservice.entitytest;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+
+import com.cg.departmentservice.entity.Department;
+
+public class DepartmentEntityTest {
+
+    @InjectMocks
+    private Department department;
+
+    @Test
+    public void testDepartmentId() {
+        department.setId(1L);
+        Assertions.assertEquals(1L, department.getId());
+    }
+
+    @Test
+    public void testDepartmentName() {
+        department.setDepartmentName("Sales");
+        Assertions.assertEquals("Sales", department.getDepartmentName());
+    }
+
+    @Test
+    public void testDepartmentDescription() {
+        department.setDepartmentDescription("Sales Department");
+        Assertions.assertEquals("Sales Department", department.getDepartmentDescription());
+    }
+
+    @Test
+    public void testDepartmentCode() {
+        department.setDepartmentCode("SALE");
+        Assertions.assertEquals("SALE", department.getDepartmentCode());
+    }
+}

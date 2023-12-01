@@ -1,0 +1,21 @@
+package com.example.demo.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.service.TrainingScheduleService;
+
+@RestController
+	@RequestMapping("/api/training-schedules")
+	public class TrainingScheduleController {
+	    private final TrainingScheduleService scheduleService;
+
+	    public TrainingScheduleController(TrainingScheduleService scheduleService) {
+	        this.scheduleService = scheduleService;
+	    }
+
+	   
+	}
+
+
+

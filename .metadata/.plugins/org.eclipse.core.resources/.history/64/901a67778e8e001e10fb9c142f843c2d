@@ -1,0 +1,70 @@
+package net.javaguides.departmentservice.servivetest;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
+
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import com.cg.departmentservice.dto.DepartmentDto;
+import com.cg.departmentservice.entity.Department;
+import com.cg.departmentservice.mapper.DepartmentMapper;
+import com.cg.departmentservice.repository.DepartmentRepository;
+import com.cg.departmentservice.service.impl.DepartmentServiceImpl;
+
+public class DepartmentServiceImplTest {
+
+    @Mock
+    private DepartmentRepository departmentRepository;
+
+    @InjectMocks
+    private DepartmentServiceImpl departmentService;
+
+    public DepartmentServiceImplTest() {
+        MockitoAnnotations.openMocks(this);
+    }
+
+    @Test
+    public void testSaveDepartment() {
+        // Mock input data
+        DepartmentDto departmentDto = new DepartmentDto();
+        // Set up your departmentDto here...
+
+        // Mock mapping behavior
+        Department departmentEntity = DepartmentMapper.mapToDepartment(departmentDto);
+        Department savedDepartmentEntity = new Department();
+        // Set up your savedDepartmentEntity here...
+        DepartmentDto expectedSavedDepartmentDto = DepartmentMapper.mapToDepartmentDto(savedDepartmentEntity);
+
+        // Mock repository method behavior
+        when(departmentRepository.save(departmentEntity)).thenReturn(savedDepartmentEntity);
+
+        // Perform the service method
+        DepartmentDto result = departmentService.saveDepartment(departmentDto);
+
+        // Validate the result
+        assertEquals(expectedSavedDepartmentDto, result);
+    }
+
+    @Test
+    public void testGetDepartmentByCode() {
+        // Mock department code
+        String departmentCode = "exampleCode";
+
+        // Mock entity and DTO
+        Department departmentEntity = new Department();
+        // Set up your departmentEntity here...
+        DepartmentDto expectedDepartmentDto = DepartmentMapper.mapToDepartmentDto(departmentEntity);
+
+        // Mock repository method behavior
+        when(departmentRepository.findByDepartmentCode(departmentCode)).thenReturn(departmentEntity);
+
+        // Perform the service method
+        DepartmentDto result = departmentService.getDepartmentByCode(departmentCode);
+
+        // Validate the result
+        assertEquals(expectedDepartmentDto, result);
+    }
+}

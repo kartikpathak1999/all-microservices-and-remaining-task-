@@ -1,0 +1,32 @@
+package com.example.demo.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entity.Mentor;
+import com.example.demo.repository.MentorRepository;
+
+
+@Service
+public class MentorServiceImpl implements MentorService {
+    private final MentorRepository mentorRepository;
+
+    public MentorServiceImpl(MentorRepository mentorRepository) {
+        this.mentorRepository = mentorRepository;
+    }
+
+	@Override
+	public List<Mentor> getAllMentors() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mentor addMentor(Mentor mentor) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+}
+
+    

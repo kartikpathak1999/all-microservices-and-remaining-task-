@@ -1,0 +1,37 @@
+package com.example.demo.serviceimpl;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entity.Mentor;
+import com.example.demo.entity.TrainingSchedule;
+import com.example.demo.repository.TrainingScheduleRepository;
+import com.example.demo.service.TrainingScheduleService;
+
+@Service
+	public class TrainingScheduleServiceImpl implements TrainingScheduleService {
+	    private final TrainingScheduleRepository scheduleRepository;
+
+	    public TrainingScheduleServiceImpl(TrainingScheduleRepository scheduleRepository) {
+	        this.scheduleRepository = scheduleRepository;
+	    }
+
+
+		@Override
+		public List<TrainingSchedule> getTrainingSchedulesByMentor(Mentor mentor) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public TrainingSchedule createTrainingSchedule(TrainingSchedule schedule) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+	    // Implement other TrainingScheduleService methods
+	}
+
+
+

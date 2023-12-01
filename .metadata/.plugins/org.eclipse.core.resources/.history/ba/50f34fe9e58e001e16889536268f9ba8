@@ -1,0 +1,33 @@
+package com.example.demo.service;
+
+
+	public interface TrainingScheduleService {
+	    List<TrainingSchedule> getTrainingSchedulesByMentor(Mentor mentor);
+	    TrainingSchedule createTrainingSchedule(TrainingSchedule schedule);
+	    // Other training schedule related methods
+	}
+
+	@Service
+	public class TrainingScheduleServiceImpl implements TrainingScheduleService {
+	    private final TrainingScheduleRepository scheduleRepository;
+
+	    public TrainingScheduleServiceImpl(TrainingScheduleRepository scheduleRepository) {
+	        this.scheduleRepository = scheduleRepository;
+	    }
+
+	    @Override
+	    public List<TrainingSchedule> getTrainingSchedulesByMentor(Mentor mentor) {
+	        return scheduleRepository.findByMentor(mentor);
+	    }
+
+	    @Override
+	    public TrainingSchedule createTrainingSchedule(TrainingSchedule schedule) {
+	        // Add validation or business logic before saving
+	        return scheduleRepository.save(schedule);
+	    }
+
+	    // Implement other TrainingScheduleService methods
+	}
+
+
+}

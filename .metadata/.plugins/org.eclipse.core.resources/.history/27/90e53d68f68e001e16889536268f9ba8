@@ -1,0 +1,19 @@
+package com.example.demo.serviceimpl;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class TrainingServiceImpl implements TrainingService {
+    private final TrainingRepository trainingRepository;
+
+    public TrainingServiceImpl(TrainingRepository trainingRepository) {
+        this.trainingRepository = trainingRepository;
+    }
+
+    @Override
+    public List<Training> getTrainingsByMentorId(Long mentorId) {
+        return trainingRepository.findByMentorId(mentorId);
+    }
+
+    // Implement other methods for training operations (CRUD)
+}

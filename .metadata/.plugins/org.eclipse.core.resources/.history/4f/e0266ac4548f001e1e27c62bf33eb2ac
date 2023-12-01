@@ -1,0 +1,87 @@
+package com.example.demo.servicetest;
+
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
+
+@ExtendWith(MockitoExtension.class)
+public class StudentServiceImplTest {
+
+    @Mock
+    private StudentRepository studentRepository;
+
+    @InjectMocks
+    private StudentServiceImpl studentService;
+
+    @Test
+    public void testGetAllStudents() {
+        // Mocking behavior of studentRepository.findAll()
+        List<Student> students = new ArrayList<>();
+        // Add sample students to the list
+        students.add(new Student(1L, "Alice"));
+        students.add(new Student(2L, "Bob"));
+
+        when(studentRepository.findAll()).thenReturn(students);
+
+        // Perform the service method
+        List<Student> result = studentService.getAllStudents();
+
+        // Assertions
+        assertEquals(students.size(), result.size());
+        assertEquals(students.get(0), result.get(0));
+        assertEquals(students.get(1), result.get(1));
+    }
+
+    @Test
+    public void testSaveStudent() {
+        // Create a sample student
+        Student newStudent = new Student(1L, "John Doe");
+
+        // Mocking behavior of studentRepository.save()
+        when(studentRepository.save(any(Student.class))).thenReturn(newStudent);
+
+        // Perform the service method
+        Student result = studentService.saveStudent(newStudent);
+
+        // Assertions
+        assertEquals(newStudent, result);
+    }
+
+    @Test
+    public void testGetStudentById() {
+        Long studentId = 1L;
+        // Create a sample student
+        Student student = new Student(studentId, "Alice");
+
+        when(studentRepository.findById(studentId)).thenReturn(Optional.of(student));
+
+        // Perform the service method
+        Optional<Student> result = studentService.getStudentById(studentId);
+
+        // Assertions
+        assertEquals(student, result.orElse(null));
+    }
+
+    @Test
+    public void testDeleteStudent() {
+        Long studentId = 1L;
+
+        // Perform the service method
+        studentService.deleteStudent(studentId);
+
+        // Verify that studentRepository.deleteById() was called with the correct ID
+        verify(studentRepository, times(1)).deleteById(eq(studentId));
+    }
+}
+
+	

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="java (1)" project="studentdemo" tests="6" started="6" failures="3" errors="0" ignored="0">
+  <testsuite name="com.example.demo.StudentdemoApplicationTests" time="1.863" displayname="StudentdemoApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.StudentdemoApplicationTests]">
+    <testcase name="contextLoads" classname="com.example.demo.StudentdemoApplicationTests" time="1.863" displayname="contextLoads()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.StudentdemoApplicationTests]/[method:contextLoads()]"/>
+  </testsuite>
+  <testsuite name="com.example.demo.entitytest.StudentTest" time="0.443" displayname="StudentTest" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.entitytest.StudentTest]">
+    <testcase name="testStudentGettersAndSetters" classname="com.example.demo.entitytest.StudentTest" time="0.443" displayname="testStudentGettersAndSetters()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.entitytest.StudentTest]/[method:testStudentGettersAndSetters()]">
+      <failure>
+        <expected>1</expected>
+        <actual>0</actual>
+        org.opentest4j.AssertionFailedError: expected: &lt;1&gt; but was: &lt;0&gt;&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)&#13;
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)&#13;
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)&#13;
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)&#13;
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:656)&#13;
+	at com.example.demo.entitytest.StudentTest.testStudentGettersAndSetters(StudentTest.java:31)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+
+      </failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="com.example.demo.servicetest.StudentServiceImplTest" time="0.564" displayname="StudentServiceImplTest" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.servicetest.StudentServiceImplTest]">
+    <testcase name="testSaveStudent" classname="com.example.demo.servicetest.StudentServiceImplTest" time="0.5" displayname="testSaveStudent()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.servicetest.StudentServiceImplTest]/[method:testSaveStudent()]"/>
+    <testcase name="testDeleteStudent" classname="com.example.demo.servicetest.StudentServiceImplTest" time="0.047" displayname="testDeleteStudent()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.servicetest.StudentServiceImplTest]/[method:testDeleteStudent()]">
+      <failure>Wanted but not invoked:
+studentRepository.deleteById(1L);
+-&gt; at com.example.demo.servicetest.StudentServiceImplTest.testDeleteStudent(StudentServiceImplTest.java:87)
+Actually, there were zero interactions with this mock.
+&#13;
+	at com.example.demo.servicetest.StudentServiceImplTest.testDeleteStudent(StudentServiceImplTest.java:87)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</failure>
+    </testcase>
+    <testcase name="testGetAllStudents" classname="com.example.demo.servicetest.StudentServiceImplTest" time="0.007" displayname="testGetAllStudents()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.servicetest.StudentServiceImplTest]/[method:testGetAllStudents()]"/>
+    <testcase name="testGetStudentById" classname="com.example.demo.servicetest.StudentServiceImplTest" time="0.006" displayname="testGetStudentById()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.servicetest.StudentServiceImplTest]/[method:testGetStudentById()]">
+      <failure>
+        <expected>com.example.demo.entity.Student@7cbaf548</expected>
+        <actual>null</actual>
+        org.opentest4j.AssertionFailedError: expected: &lt;com.example.demo.entity.Student@7cbaf548&gt; but was: &lt;null&gt;&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)&#13;
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)&#13;
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)&#13;
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)&#13;
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)&#13;
+	at com.example.demo.servicetest.StudentServiceImplTest.testGetStudentById(StudentServiceImplTest.java:76)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+
+      </failure>
+    </testcase>
+  </testsuite>
+</testrun>
